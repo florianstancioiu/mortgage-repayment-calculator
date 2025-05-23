@@ -5,12 +5,12 @@ defineProps<{ title: string }>();
 <template>
   <header class="mb-[2.375rem]">
     <div class="fm:flex fm:justify-between fm:items-center pt-[2.75rem]">
-      <h1 class="text-2xl font-bold mb-[1.5rem]">
+      <a href="#" class="text-2xl font-bold mb-[1.5rem] block">
         {{ title }}
-      </h1>
-      <p class="text-secondary cursor-pointer underline inline-block">
+      </a>
+      <a href="#" class="text-secondary cursor-pointer underline inline-block">
         Clear All
-      </p>
+      </a>
     </div>
   </header>
 </template>
