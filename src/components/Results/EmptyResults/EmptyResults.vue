@@ -1,3 +1,15 @@
+<script setup>
+import EmptyIllustrationSVG from "../../../assets/svg/illustration-empty.svg";
+</script>
+
 <template>
-  <h1 class="text-3xl font-bold underline"></h1>
+  <div class="text-center">
+    <EmptyIllustrationSVG />
+    <p>Results shown here</p>
+
+    <p>
+      Complete the form and click “calculate repayments” to see what your
+      monthly repayments would be.
+    </p>
+  </div>
 </template>

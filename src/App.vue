@@ -3,7 +3,7 @@ import Header from "./components/Header/Header.vue";
 import Input from "./components/Input/Input.vue";
 import RadioInput from "./components/RadioInput/RadioInput.vue";
 import Button from "./components/Button/Button.vue";
-import IconCalculatorSVG from "./assets/icon-calculator.svg";
+import IconCalculatorSVG from "./assets/svg/icon-calculator.svg";
 import Results from "./components/Results/Results.vue";
 
 const mortgageTypes = [
@@ -23,7 +23,7 @@ const totalRepay: number | null = null;
 
 <template>
   <div>
-    <main>
+    <main class="bg-white px-[1.5rem]">
       <Header title="Mortgage Calculator" />
       <Input title="Mortgage Amount" prefix="£" />
       <div>
