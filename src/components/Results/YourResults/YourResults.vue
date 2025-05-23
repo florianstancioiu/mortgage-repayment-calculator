@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { monthlyRepayments, totalRepay } = defineProps<{
-  monthlyRepayments: number | null;
-  totalRepay: number | null;
+  monthlyRepayments: number;
+  totalRepay: number;
 }>();
 </script>
 

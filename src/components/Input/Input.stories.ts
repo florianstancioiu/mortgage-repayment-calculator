@@ -1,17 +1,18 @@
-import { Meta } from "@storybook/vue3";
-import Button from "./Button.vue";
+import { type Meta } from "@storybook/vue3";
+import Input from "./Input.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-const meta: Meta<typeof Button> = {
-  title: "Base/Button",
-  component: Button,
+const meta: Meta<typeof Input> = {
+  title: "Components/Input",
+  component: Input,
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
   argTypes: {
-    size: { control: { type: "select" }, options: ["small", "large"] },
-    variant: { control: { type: "select" }, options: ["primary", "secondary"] },
+    title: { control: { type: "text" } },
+    prefix: { control: { type: "text" } },
+    suffix: { control: { type: "text" } },
   },
 };
 
@@ -20,32 +21,28 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
   args: {
-    size: "large",
-    variant: "primary",
-    label: "Button",
+    title: "Lorem ipsum dolor sit amet",
   },
 };
 
-export const Secondary = {
+export const WithPrefix = {
   args: {
-    size: "large",
-    variant: "secondary",
-    label: "Button",
+    title: "Lorem ipsum dolor sit amet",
+    prefix: "prefix",
   },
 };
 
-export const Large = {
+export const WithSuffix = {
   args: {
-    size: "large",
-    variant: "primary",
-    label: "Button",
+    title: "Lorem ipsum dolor sit amet",
+    suffix: "suffix",
   },
 };
 
-export const Small = {
+export const WithPrefixAndSuffix = {
   args: {
-    size: "small",
-    variant: "primary",
-    label: "Button",
+    title: "Lorem ipsum dolor sit amet",
+    prefix: "prefix",
+    suffix: "suffix",
   },
 };

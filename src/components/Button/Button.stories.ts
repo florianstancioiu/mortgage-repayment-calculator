@@ -15,17 +15,9 @@ export default meta;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
-  args: {
-    size: "large",
-    variant: "primary",
-    label: "Button",
-  },
+  decorators: [() => ({ template: "<Button>Lorem dolor sit amet</Button>" })],
 };
 
 export const Secondary = {
-  args: {
-    size: "large",
-    variant: "secondary",
-    label: "Button",
-  },
+  decorators: [() => ({ template: "<Button>Secondary text</Button>" })],
 };

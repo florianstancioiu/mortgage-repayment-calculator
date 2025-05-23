@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import EmptyIllustrationSVG from "../../../assets/svg/illustration-empty.svg";
 </script>
 
