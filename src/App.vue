@@ -23,7 +23,7 @@ const totalRepay: number | null = null;
 
 <template>
   <div>
-    <main class="bg-white px-[1.5rem]">
+    <main class="bg-white px-[1.5rem] pb-8">
       <Header title="Mortgage Calculator" />
       <Input title="Mortgage Amount" prefix="£" />
       <div>
