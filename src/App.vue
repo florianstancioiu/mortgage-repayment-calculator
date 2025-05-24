@@ -17,8 +17,8 @@ const mortgageTypes = [
   },
 ];
 
-const monthlyRepayments: number | null = 1797.74;
-const totalRepay: number | null = 539322.94;
+const monthlyRepayments: number | null = null; // 1797.74;
+const totalRepay: number | null = null; // 539322.94;
 </script>
 
 <template>
