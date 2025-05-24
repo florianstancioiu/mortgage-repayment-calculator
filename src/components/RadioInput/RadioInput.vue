@@ -16,11 +16,11 @@ const { title, name, values } = defineProps<{
       <input
         :id="val.title.toLowerCase().replace(' ', '_')"
         :name="name"
-        class=""
+        class="cursor-pointer"
         type="radio"
       />
       <label
-        class="text-primary"
+        class="text-primary cursor-pointer"
         :for="val.title.toLowerCase().replace(' ', '_')"
         >{{ val.title }}</label
       >

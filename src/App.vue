@@ -22,11 +22,13 @@ const totalRepay: number | null = 539322.94;
 </script>
 
 <template>
-  <div>
-    <main class="bg-white px-[1.5rem] pb-8">
+  <div
+    class="lg:w-[63.125rem] lg:grid lg:grid-cols-2 lg:rounded-2xl lg:overflow-hidden lg:bg-white"
+  >
+    <main class="bg-white px-[1.5rem] pb-8 lg:px-[2.5rem]">
       <Header title="Mortgage Calculator" />
       <Input title="Mortgage Amount" prefix="£" />
-      <div>
+      <div class="lg:grid lg:grid-cols-2 lg:gap-x-[1.375rem]">
         <Input title="Mortgage Term" suffix="years" />
         <Input title="Interest Rate" suffix="%" />
       </div>

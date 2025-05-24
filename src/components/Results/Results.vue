@@ -9,7 +9,9 @@ const { monthlyRepayments, totalRepay } = defineProps<{
 </script>
 
 <template>
-  <aside class="bg-bg-secondary text-white">
+  <aside
+    class="bg-bg-secondary text-white lg:rounded-bl-[5rem] lg:overflow-hidden"
+  >
     <YourResults
       v-if="monthlyRepayments && totalRepay"
       :totalRepay="totalRepay"
