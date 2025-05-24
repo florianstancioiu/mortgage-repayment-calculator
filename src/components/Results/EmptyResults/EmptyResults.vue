@@ -3,7 +3,7 @@ import EmptyIllustrationSVG from "../../../assets/svg/illustration-empty.svg";
 </script>
 
 <template>
-  <div class="text-center pt-[2.25rem] pb-[2.25rem] text-white">
+  <div class="bg-bg-secondary text-center pt-[2.25rem] pb-[2.25rem] text-white">
     <EmptyIllustrationSVG class="mx-auto" />
     <p class="mt-[2.75rem] mb-[1.875rem] text-2xl font-bold">
       Results shown here

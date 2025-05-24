@@ -4,9 +4,11 @@
   --font-plus-jakarta-sans: "Plus Jakarta Sans", sans-serif;
   --color-bg-primary: #e3f4fc;
   --color-bg-secondary: #133040;
+  --color-bg-ternary: #0e2431;
   --color-bg-cta: #d9db30;
   --color-bg-radio-input: #f9f9df;
   --color-error: hsl(4, 69%, 50%);
   --color-primary: #0a1e2a;
   --color-secondary: #636c73;
+  --color-border-primary: #314754;
 }
