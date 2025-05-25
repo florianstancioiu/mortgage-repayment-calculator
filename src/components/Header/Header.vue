@@ -1,5 +1,12 @@
 <script setup lang="ts">
 defineProps<{ title: string }>();
+
+const emit = defineEmits(["clearAll"]);
+
+const onClickClearAllHandler = (event: Event) => {
+  event.preventDefault;
+  emit("clearAll");
+};
 </script>
 
 <template>
@@ -8,7 +15,11 @@ defineProps<{ title: string }>();
       <a href="#" class="lg:mb-0 text-2xl font-bold mb-[1.5rem] block">
         {{ title }}
       </a>
-      <a href="#" class="text-secondary cursor-pointer underline inline-block">
+      <a
+        href="#"
+        class="text-secondary cursor-pointer underline inline-block"
+        @click="(event) => onClickClearAllHandler(event)"
+      >
         Clear All
       </a>
     </div>

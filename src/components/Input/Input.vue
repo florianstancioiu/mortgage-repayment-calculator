@@ -1,11 +1,22 @@
 <script setup lang="ts">
-const { title } = defineProps<{
+const { title, value } = defineProps<{
   title: string;
+  value: number | null;
   prefix?: string;
   suffix?: string;
 }>();
 
+const emit = defineEmits(["inputChange"]);
+
 const titleId = title.toLowerCase().replace(" ", "_");
+
+const changeHandler = (event: Event) => {
+  if (event.target) {
+    const element = event.target as HTMLInputElement;
+
+    emit("inputChange", +element.value);
+  }
+};
 </script>
 
 <template>
@@ -24,6 +35,8 @@ const titleId = title.toLowerCase().replace(" ", "_");
       </p>
       <input
         :id="titleId"
+        :value="value"
+        @change="changeHandler"
         :class="`${prefix ? 'pl-12 pr-3' : ''} ${
           suffix ? 'pr-20 pl-3' : ''
         } h-[3rem] w-full`"
