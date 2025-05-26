@@ -98,6 +98,8 @@ Use this section to outline areas that you want to continue focusing on in futur
 - [Component decorators](https://storybook.js.org/docs/writing-stories/decorators#component-decorators) - This helped me set slot content to the Button component in Storybook
 - [Vue 3 with Typescript 'Could Not Find A Declaration File'](https://stackoverflow.com/a/78137284/12159189) - This helped me debug an issue with a story file
 - [::before and ::after](https://tailwindcss.com/docs/hover-focus-and-other-states#before-and-after) - ~~This helped me use before pseudo element in TailwindCSS~~ It turns out it's easier to just use a new element instead of using `::before` or `::after`
+- [Monthly payment formula](https://en.wikipedia.org/wiki/Mortgage_calculator#Monthly_payment_formula) - I tried using this formula but it just didnt yield the right results, so I turned and asked chatgpt for the mortgage formula in the UK - and it worked
+- [Number.prototype.toLocaleString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#using_options) - This helped me format the floating point numbers to use a maximum of 2 decimal places
 
 ## Author
 
