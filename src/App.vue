@@ -22,21 +22,21 @@ const initialMortgageTypes = [
 ];
 
 const mortgageTypes = ref<RadioInputValue[]>(initialMortgageTypes);
-const monthlyRepayments: number | null = null; // 1797.74;
-const totalRepay: number | null = null; // 539322.94;
-const mortgageAmount = ref<number | null>(null);
-const mortgageTerm = ref<number | null>(null);
-const interestRate = ref<number | null>(null);
+const monthlyRepayments = ref<number>(0); // 1797.74;
+const totalRepay = ref<number>(0); // 539322.94;
+const mortgageAmount = ref<number | string>(300000);
+const mortgageTerm = ref<number | string>(25);
+const interestRate = ref<number | string>(5.25);
 
-const onChangeMortgageAmountHandler = (value: number) => {
+const onChangeMortgageAmountHandler = (value: string) => {
   mortgageAmount.value = value;
 };
 
-const onChangeMortgageTermHandler = (value: number) => {
+const onChangeMortgageTermHandler = (value: string) => {
   mortgageTerm.value = value;
 };
 
-const onChangeInterestRateHandler = (value: number) => {
+const onChangeInterestRateHandler = (value: string) => {
   interestRate.value = value;
 };
 
@@ -53,10 +53,48 @@ const onClickMortgageTypeHandler = (value: RadioInputValue) => {
 };
 
 const onClearAllHandler = () => {
-  mortgageAmount.value = null;
-  mortgageTerm.value = null;
-  interestRate.value = null;
+  mortgageAmount.value = "";
+  mortgageTerm.value = "";
+  interestRate.value = "";
   mortgageTypes.value = initialMortgageTypes;
+};
+
+const calculateMortgage = () => {
+  const type = mortgageTypes.value.find((mType) => mType.isChecked === true);
+
+  switch (type?.title) {
+    case initialMortgageTypes[0].title: {
+      calculateRepayment();
+      break;
+    }
+    case initialMortgageTypes[1].title: {
+      calculateInterestOnly();
+      break;
+    }
+  }
+};
+
+const calculateRepayment = () => {
+  const P = +mortgageAmount.value;
+  const r = +interestRate.value / 12 / 100;
+  const N = +mortgageTerm.value * 12;
+
+  if (r === 0) {
+    monthlyRepayments.value = P / N;
+    totalRepay.value = (P / N) * N;
+  } else {
+    monthlyRepayments.value =
+      P * ((r * Math.pow(1 + r, N)) / (Math.pow(1 + r, N) - 1));
+    totalRepay.value = monthlyRepayments.value * N;
+  }
+};
+const calculateInterestOnly = () => {
+  const P = +mortgageAmount.value;
+  const r = +interestRate.value / 12 / 100;
+  const N = +mortgageTerm.value * 12;
+
+  monthlyRepayments.value = P * r;
+  totalRepay.value = P * r * N;
 };
 </script>
 
@@ -92,7 +130,7 @@ const onClearAllHandler = () => {
         @input-click="onClickMortgageTypeHandler"
         :values="mortgageTypes"
       />
-      <Button>
+      <Button @click="calculateMortgage">
         <IconCalculatorSVG />
         <span>Calculate Repayments</span>
       </Button>

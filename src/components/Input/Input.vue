@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { title, value } = defineProps<{
   title: string;
-  value: number | null;
+  value: number | string;
   prefix?: string;
   suffix?: string;
 }>();
@@ -10,11 +10,11 @@ const emit = defineEmits(["inputChange"]);
 
 const titleId = title.toLowerCase().replace(" ", "_");
 
-const changeHandler = (event: Event) => {
+const onInputHandler = (event: Event) => {
   if (event.target) {
     const element = event.target as HTMLInputElement;
 
-    emit("inputChange", +element.value);
+    emit("inputChange", element.value);
   }
 };
 </script>
@@ -24,6 +24,7 @@ const changeHandler = (event: Event) => {
     <label :for="titleId" class="text-secondary mb-4 inline-block">{{
       title
     }}</label>
+    <p class="bg-red w-full h-[20px]">{{ value }}</p>
     <div
       class="w-full border-secondary border-[0.063rem] relative rounded-[0.25rem] h-[3.125rem]"
     >
@@ -36,7 +37,7 @@ const changeHandler = (event: Event) => {
       <input
         :id="titleId"
         :value="value"
-        @change="changeHandler"
+        @input="onInputHandler"
         :class="`${prefix ? 'pl-12 pr-3' : ''} ${
           suffix ? 'pr-20 pl-3' : ''
         } h-[3rem] w-full`"

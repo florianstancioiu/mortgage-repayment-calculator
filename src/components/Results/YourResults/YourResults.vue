@@ -22,12 +22,22 @@ const { monthlyRepayments, totalRepay } = defineProps<{
         <div class="mb-[1.5rem] border-b-[0.063rem] border-border-primary">
           <p class="opacity-50 mb-[1.5rem]">Your monthly repayments</p>
           <p class="text-bg-cta pb-[1.5rem] text-5xl font-extrabold">
-            £{{ monthlyRepayments.toLocaleString() }}
+            £{{
+              monthlyRepayments.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })
+            }}
           </p>
         </div>
         <p class="opacity-50 mb-[1.5rem]">Total you'll repay over the term</p>
         <p class="text-2xl font-extrabold">
-          £{{ totalRepay.toLocaleString() }}
+          £{{
+            totalRepay.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })
+          }}
         </p>
       </div>
     </div>

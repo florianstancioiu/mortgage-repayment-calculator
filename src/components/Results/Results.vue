@@ -3,8 +3,8 @@ import EmptyResults from "./EmptyResults/EmptyResults.vue";
 import YourResults from "./YourResults/YourResults.vue";
 
 const { monthlyRepayments, totalRepay } = defineProps<{
-  monthlyRepayments: number | null;
-  totalRepay: number | null;
+  monthlyRepayments: number;
+  totalRepay: number;
 }>();
 </script>
 
@@ -17,6 +17,6 @@ const { monthlyRepayments, totalRepay } = defineProps<{
       :totalRepay="totalRepay"
       :monthlyRepayments="monthlyRepayments"
     />
-    <EmptyResults v-if="!monthlyRepayments" />
+    <EmptyResults v-if="!monthlyRepayments && !totalRepay" />
   </aside>
 </template>
