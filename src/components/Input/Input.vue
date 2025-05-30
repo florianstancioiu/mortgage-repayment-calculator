@@ -109,8 +109,8 @@ watch(
         {{ suffix }}
       </p>
     </div>
-    <p v-if="isError" class="text-error mt-4">
-      This field is required and it must be a number
+    <p v-if="isError" class="text-error mt-4 text-[0.75rem]">
+      This field is required and it must be a positive number
     </p>
   </div>
 </template>

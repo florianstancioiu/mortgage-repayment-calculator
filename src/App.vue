@@ -33,17 +33,17 @@ const monthlyRepayments = ref<number>(0); // 1797.74;
 const totalRepay = ref<number>(0); // 539322.94;
 
 const mortgageAmount = ref<InputOptions>({
-  currentValue: 300000,
+  currentValue: "", // 300000,
   active: false,
   error: false,
 });
 const mortgageTerm = ref<InputOptions>({
-  currentValue: 25,
+  currentValue: "", // 25,
   active: false,
   error: false,
 });
 const interestRate = ref<InputOptions>({
-  currentValue: 5.25,
+  currentValue: "", // 5.25,
   active: false,
   error: false,
 });
@@ -102,6 +102,7 @@ const calculateMortgage = () => {
   refsToValidate.forEach((ref, index) => {
     if (
       isNaN(+ref.value.currentValue) ||
+      +ref.value.currentValue < 0 ||
       (index !== 2 && +ref.value.currentValue === 0) ||
       (index === 2 && ref.value.currentValue === "")
     ) {
