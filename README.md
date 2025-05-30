@@ -63,35 +63,39 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+- When watching for props like `props.options.currentValue`, you must always use the `props` variable so that the `watch` function can work correctly
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+This code will work correctly
 
 ```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
+watch(
+  () => props.options.currentValue,
+  (newCurrentValue) => {
+    console.log(`The newCurrentValue is: ${newCurrentValue}`);
+  }
+);
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+This will never get triggered:
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+```js
+const props = defineProps<{
+  title: string;
+  options: InputOptions;
+  prefix?: string;
+  suffix?: string;
+}>();
 
-### Continued development
+const { title, options } = props;
+const { currentValue, error, active } = options;
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+watch(
+  () => currentValue,
+  (newCurrentValue) => {
+    console.log(`The newCurrentValue is: ${newCurrentValue}`);
+  }
+);
+```
 
 ### Useful resources
 

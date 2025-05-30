@@ -6,6 +6,7 @@ import Button from "./components/Button/Button.vue";
 import IconCalculatorSVG from "./assets/svg/icon-calculator.svg";
 import Results from "./components/Results/Results.vue";
 import { type RadioInputValue } from "./components/RadioInput/RadioInput.vue";
+import { type InputOptions } from "./components/Input/Input.vue";
 import { ref } from "vue";
 
 const initialMortgageTypes = [
@@ -21,23 +22,58 @@ const initialMortgageTypes = [
   },
 ];
 
+const initialInputOptions: InputOptions = {
+  currentValue: "",
+  active: false,
+  error: false,
+};
+
 const mortgageTypes = ref<RadioInputValue[]>(initialMortgageTypes);
 const monthlyRepayments = ref<number>(0); // 1797.74;
 const totalRepay = ref<number>(0); // 539322.94;
-const mortgageAmount = ref<number | string>(300000);
-const mortgageTerm = ref<number | string>(25);
-const interestRate = ref<number | string>(5.25);
 
-const onChangeMortgageAmountHandler = (value: string) => {
-  mortgageAmount.value = value;
+const mortgageAmount = ref<InputOptions>({
+  currentValue: 300000,
+  active: false,
+  error: false,
+});
+const mortgageTerm = ref<InputOptions>({
+  currentValue: 25,
+  active: false,
+  error: false,
+});
+const interestRate = ref<InputOptions>({
+  currentValue: 5.25,
+  active: false,
+  error: false,
+});
+
+const onChangeInput = ({ value, title }: { value: string; title: string }) => {
+  switch (title) {
+    case "Mortgage Amount":
+      mortgageAmount.value.currentValue = value;
+      break;
+    case "Mortgage Term":
+      mortgageTerm.value.currentValue = value;
+      break;
+    case "Interest Rate":
+      interestRate.value.currentValue = value;
+      break;
+  }
 };
 
-const onChangeMortgageTermHandler = (value: string) => {
-  mortgageTerm.value = value;
-};
-
-const onChangeInterestRateHandler = (value: string) => {
-  interestRate.value = value;
+const onFocusInput = ({ value, title }: { value: boolean; title: string }) => {
+  switch (title) {
+    case "Mortgage Amount":
+      mortgageAmount.value.active = value;
+      break;
+    case "Mortgage Term":
+      mortgageTerm.value.active = value;
+      break;
+    case "Interest Rate":
+      interestRate.value.active = value;
+      break;
+  }
 };
 
 const onClickMortgageTypeHandler = (value: RadioInputValue) => {
@@ -53,9 +89,9 @@ const onClickMortgageTypeHandler = (value: RadioInputValue) => {
 };
 
 const onClearAllHandler = () => {
-  mortgageAmount.value = "";
-  mortgageTerm.value = "";
-  interestRate.value = "";
+  mortgageAmount.value = Object.assign({}, initialInputOptions);
+  mortgageTerm.value = Object.assign({}, initialInputOptions);
+  interestRate.value = Object.assign({}, initialInputOptions);
   mortgageTypes.value = initialMortgageTypes;
 };
 
@@ -75,9 +111,9 @@ const calculateMortgage = () => {
 };
 
 const calculateRepayment = () => {
-  const P = +mortgageAmount.value;
-  const r = +interestRate.value / 12 / 100;
-  const N = +mortgageTerm.value * 12;
+  const P = +mortgageAmount.value.currentValue;
+  const r = +interestRate.value.currentValue / 12 / 100;
+  const N = +mortgageTerm.value.currentValue * 12;
 
   if (r === 0) {
     monthlyRepayments.value = P / N;
@@ -88,10 +124,11 @@ const calculateRepayment = () => {
     totalRepay.value = monthlyRepayments.value * N;
   }
 };
+
 const calculateInterestOnly = () => {
-  const P = +mortgageAmount.value;
-  const r = +interestRate.value / 12 / 100;
-  const N = +mortgageTerm.value * 12;
+  const P = +mortgageAmount.value.currentValue;
+  const r = +interestRate.value.currentValue / 12 / 100;
+  const N = +mortgageTerm.value.currentValue * 12;
 
   monthlyRepayments.value = P * r;
   totalRepay.value = P * r * N;
@@ -105,21 +142,24 @@ const calculateInterestOnly = () => {
     <main class="bg-white px-[1.5rem] pb-8 lg:px-[2.5rem]">
       <Header title="Mortgage Calculator" @clear-all="onClearAllHandler" />
       <Input
-        :value="mortgageAmount"
-        @input-change="onChangeMortgageAmountHandler"
+        :options="mortgageAmount"
+        @input-change="onChangeInput"
+        @input-focus="onFocusInput"
         title="Mortgage Amount"
         prefix="£"
       />
       <div class="lg:grid lg:grid-cols-2 lg:gap-x-[1.375rem]">
         <Input
-          :value="mortgageTerm"
-          @input-change="onChangeMortgageTermHandler"
+          :options="mortgageTerm"
+          @input-change="onChangeInput"
+          @input-focus="onFocusInput"
           title="Mortgage Term"
           suffix="years"
         />
         <Input
-          :value="interestRate"
-          @input-change="onChangeInterestRateHandler"
+          :options="interestRate"
+          @input-change="onChangeInput"
+          @input-focus="onFocusInput"
           title="Interest Rate"
           suffix="%"
         />
