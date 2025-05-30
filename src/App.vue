@@ -97,6 +97,19 @@ const onClearAllHandler = () => {
 
 const calculateMortgage = () => {
   const type = mortgageTypes.value.find((mType) => mType.isChecked === true);
+  const refsToValidate = [mortgageAmount, mortgageTerm, interestRate];
+
+  refsToValidate.forEach((ref, index) => {
+    if (
+      isNaN(+ref.value.currentValue) ||
+      (index !== 2 && +ref.value.currentValue === 0) ||
+      (index === 2 && ref.value.currentValue === "")
+    ) {
+      ref.value.error = true;
+    } else {
+      ref.value.error = false;
+    }
+  });
 
   switch (type?.title) {
     case initialMortgageTypes[0].title: {
