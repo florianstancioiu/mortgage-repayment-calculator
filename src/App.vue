@@ -29,8 +29,8 @@ const initialInputOptions: InputOptions = {
 };
 
 const mortgageTypes = ref<RadioInputValue[]>(initialMortgageTypes);
-const monthlyRepayments = ref<number>(0); // 1797.74;
-const totalRepay = ref<number>(0); // 539322.94;
+const monthlyRepayments = ref<number>(NaN); // 1797.74;
+const totalRepay = ref<number>(NaN); // 539322.94;
 
 const mortgageAmount = ref<InputOptions>({
   currentValue: "", // 300000,
@@ -111,6 +111,10 @@ const calculateMortgage = () => {
       ref.value.error = false;
     }
   });
+
+  if (refsToValidate.find((ref) => ref.value.error === true)) {
+    return;
+  }
 
   switch (type?.title) {
     case initialMortgageTypes[0].title: {

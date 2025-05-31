@@ -13,10 +13,10 @@ const { monthlyRepayments, totalRepay } = defineProps<{
     class="bg-bg-secondary text-white lg:rounded-bl-[5rem] lg:overflow-hidden"
   >
     <YourResults
-      v-if="monthlyRepayments && totalRepay"
+      v-if="!isNaN(monthlyRepayments) && !isNaN(totalRepay)"
       :totalRepay="totalRepay"
       :monthlyRepayments="monthlyRepayments"
     />
-    <EmptyResults v-if="!monthlyRepayments && !totalRepay" />
+    <EmptyResults v-if="isNaN(monthlyRepayments) && isNaN(totalRepay)" />
   </aside>
 </template>

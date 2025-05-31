@@ -77,15 +77,15 @@ watch(
       >{{ title }}</label
     >
     <div
-      :class="`${isActive ? 'border-bg-cta' : ''}
+      :class="`${isActive ? 'border-bg-cta' : 'border-secondary'}
       ${isError ? 'border-error' : ''}      
-    border-secondary w-full border-[0.063rem] relative focus:border-bg-cta rounded-[0.25rem] h-[3.125rem]`"
+     w-full border-[0.063rem] relative focus:border-bg-cta rounded-[0.25rem] h-[3.125rem]`"
     >
       <p
         v-if="prefix"
-        :class="`${isActive ? 'bg-bg-cta' : ''} 
+        :class="`${isActive ? 'bg-bg-cta' : 'bg-bg-primary'} 
         ${isError ? 'bg-error text-white' : ''}
-      bg-bg-primary select-none absolute left-0 top-0 h-[3rem] grid place-items-center px-4`"
+       select-none absolute left-0 top-0 h-[3rem] grid place-items-center px-4`"
       >
         {{ prefix }}
       </p>
@@ -102,9 +102,9 @@ watch(
       />
       <p
         v-if="suffix"
-        :class="`${isActive ? 'bg-bg-cta' : ''}
+        :class="`${isActive ? 'bg-bg-cta' : 'bg-bg-primary'}
         ${isError ? 'bg-error text-white' : ''}
-      bg-bg-primary select-none absolute right-0 top-0 h-[3rem] grid place-items-center px-4`"
+       select-none absolute right-0 top-0 h-[3rem] grid place-items-center px-4`"
       >
         {{ suffix }}
       </p>
