@@ -8,7 +8,7 @@ const firstValueTitle = "1 - Lorem ipsum dolor sit amet";
 const secondValueTitle = "2 - John Doe";
 const thirdValueTitle = "3 - Jane Doe";
 
-const defaultRadioInputValue: RadioInputValue[] = [
+const defaultRadioInputValues: RadioInputValue[] = [
   {
     id: 1,
     isChecked: false,
@@ -34,7 +34,7 @@ describe("RadioInput", () => {
       props: {
         title: titleText,
         name: "lorem_ipsum",
-        values: defaultRadioInputValue,
+        values: defaultRadioInputValues,
       },
     });
 
@@ -52,12 +52,12 @@ describe("RadioInput", () => {
     );
   });
 
-  it("renders the correct checked state of a radio input", () => {
+  it("renders the correct checked state of a component instance", () => {
     const wrapper = mount(RadioInput, {
       props: {
         title: titleText,
         name: "lorem_ipsum",
-        values: defaultRadioInputValue,
+        values: defaultRadioInputValues,
       },
     });
 
@@ -71,5 +71,23 @@ describe("RadioInput", () => {
     expect(firstInput.checked).toBe(false);
     expect(secondInput.checked).toBe(true);
     expect(thirdInput.checked).toBe(false);
+  });
+
+  it("emits inputClick when clicking on a radio input", () => {
+    const wrapper = mount(RadioInput, {
+      props: {
+        title: titleText,
+        name: "lorem_ipsum",
+        values: defaultRadioInputValues,
+      },
+    });
+
+    const firstInput = wrapper.find("div > label:nth-child(2)");
+    firstInput.trigger("click");
+
+    expect(wrapper.emitted()).toHaveProperty("inputClick");
+    expect(wrapper.emitted().inputClick[0]).toEqual([
+      defaultRadioInputValues[0],
+    ]);
   });
 });
