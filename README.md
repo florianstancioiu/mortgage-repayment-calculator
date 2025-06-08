@@ -33,7 +33,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/mortgage-repayment-calculator---vue-typescript-vitest-storybook-qKjSSyUgXc](https://www.frontendmentor.io/solutions/mortgage-repayment-calculator---vue-typescript-vitest-storybook-qKjSSyUgXc)
 - Live Site URL: [https://florianstancioiu.github.io/mortgage-repayment-calculator](https://florianstancioiu.github.io/mortgage-repayment-calculator/)
 - Chromatic Storybook: [https://684597d98ddc1f07beda4a18-chshwljerx.chromatic.com/?path=/docs/components-button--docs](https://684597d98ddc1f07beda4a18-chshwljerx.chromatic.com/?path=/docs/components-button--docs)
 
