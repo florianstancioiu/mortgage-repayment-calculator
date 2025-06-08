@@ -27,10 +27,12 @@ export const Primary = {
       {
         id: 1,
         title: "Repayment",
+        isChecked: true,
       },
       {
         id: 2,
         title: "Interest Only",
+        isChecked: false,
       },
     ],
   },

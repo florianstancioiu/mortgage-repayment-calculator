@@ -18,7 +18,7 @@ export default meta;
 export const Primary = {
   render: () => ({
     components: { Button },
-    template: "<Button>Lorem dolor sit amet</Button>",
+    template: "<Button>Lorem ipsum dolor sit amet</Button>",
   }),
 };
 

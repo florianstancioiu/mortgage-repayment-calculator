@@ -95,8 +95,8 @@ watch(
         @focus="onFocusHandler"
         @blur="onBlurHandler"
         @input="onInputHandler"
-        :class="`${prefix ? 'pl-12 pr-3' : ''} ${
-          suffix ? 'pr-20 pl-3' : ''
+        :class="`${prefix ? 'pl-12 pr-3' : 'pl-3'} ${
+          suffix ? 'pr-20 pl-3' : 'pr-3'
         } h-[3rem] w-full focus:outline-bg-cta focus:border-bg-cta`"
         type="text"
       />

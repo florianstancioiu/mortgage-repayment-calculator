@@ -10,8 +10,8 @@ const meta: Meta<typeof Results> = {
     layout: "centered",
   },
   argTypes: {
-    monthlyRepayments: { control: { type: "number" } },
-    totalRepay: { control: { type: "number" } },
+    monthlyRepayments: { control: { type: "radio" }, options: [NaN, 0, 12345] },
+    totalRepay: { control: { type: "radio" }, options: [NaN, 0, 12345] },
   },
 };
 
@@ -20,7 +20,21 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
   args: {
-    monthlyRepayments: null,
-    totalRepay: null,
+    monthlyRepayments: NaN,
+    totalRepay: NaN,
+  },
+};
+
+export const Secondary = {
+  args: {
+    monthlyRepayments: 12345,
+    totalRepay: 12345,
+  },
+};
+
+export const Ternary = {
+  args: {
+    monthlyRepayments: 0,
+    totalRepay: 0,
   },
 };
