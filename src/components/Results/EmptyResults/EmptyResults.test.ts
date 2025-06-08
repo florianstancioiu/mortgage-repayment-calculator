@@ -1,35 +1,20 @@
-/* import { mount } from "@vue/test-utils";
-import { describe, it, expect, vi } from "vitest";
+import { mount } from "@vue/test-utils";
+import { describe, it, expect } from "vitest";
 
-import Button from "./Button.vue";
+import EmptyResults from "./EmptyResults.vue";
 
-describe("Button", () => {
-  it("renders the text", () => {
-    const wrapper = mount(Button, {
-      props: {
-        label: "Click me!",
-        onClick: () => {},
-        disabled: false,
-        variant: "primary",
-        size: "large",
-      },
+describe("EmptyResults", () => {
+  const text1 = "Results shown here";
+  const text2 =
+    "Complete the form and click “calculate repayments” to see what your monthly repayments would be.";
+
+  it("renders the default text", () => {
+    const wrapper = mount(EmptyResults, {
+      props: {},
     });
-    expect(wrapper.find("button").text()).toBe("Click me!");
-  });
 
-  it("calls onClick when clicked", () => {
-    const onClick = vi.fn();
-    const wrapper = mount(Button, {
-      props: {
-        label: "Click me!",
-        onClick,
-        disabled: false,
-        variant: "primary",
-        size: "large",
-      },
-    });
-    wrapper.find("button").trigger("click");
-    expect(onClick).toHaveBeenCalled();
+    // I don't know why but it seems that a new p element is created before the existing p elements in the DOM - probably regarding the svg
+    expect(wrapper.find("div > div > p:nth-child(2)").text()).toEqual(text1);
+    expect(wrapper.find("div > div > p:nth-child(3)").text()).toEqual(text2);
   });
 });
- */
