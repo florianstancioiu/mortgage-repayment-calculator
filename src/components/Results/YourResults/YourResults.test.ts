@@ -1,35 +1,22 @@
-/* import { mount } from "@vue/test-utils";
-import { describe, it, expect, vi } from "vitest";
+import { mount } from "@vue/test-utils";
+import { describe, it, expect } from "vitest";
 
-import Button from "./Button.vue";
+import YourResults from "./YourResults.vue";
 
-describe("Button", () => {
-  it("renders the text", () => {
-    const wrapper = mount(Button, {
+describe("YourResults", () => {
+  it("renders the right formatted numbers", () => {
+    const wrapper = mount(YourResults, {
       props: {
-        label: "Click me!",
-        onClick: () => {},
-        disabled: false,
-        variant: "primary",
-        size: "large",
+        monthlyRepayments: 123456,
+        totalRepay: 654321,
       },
     });
-    expect(wrapper.find("button").text()).toBe("Click me!");
-  });
 
-  it("calls onClick when clicked", () => {
-    const onClick = vi.fn();
-    const wrapper = mount(Button, {
-      props: {
-        label: "Click me!",
-        onClick,
-        disabled: false,
-        variant: "primary",
-        size: "large",
-      },
-    });
-    wrapper.find("button").trigger("click");
-    expect(onClick).toHaveBeenCalled();
+    expect(
+      wrapper.find("div > div > div > div > p:nth-child(2)").text()
+    ).toEqual("£123,456.00");
+    expect(wrapper.find("div > div  p.text-2xl.font-extrabold").text()).toEqual(
+      "£654,321.00"
+    );
   });
 });
- */
