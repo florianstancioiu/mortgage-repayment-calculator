@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { watch, ref } from "vue";
+
 export type RadioInputValue = {
   id: number;
   isChecked: boolean;
@@ -7,19 +9,32 @@ export type RadioInputValue = {
 
 const emit = defineEmits(["inputClick"]);
 
-const { title, name, values } = defineProps<{
+const props = defineProps<{
   title: string;
   name: string;
   values: RadioInputValue[];
 }>();
+
+const { title, name, values } = props;
+
+const inputValues = ref(values);
+
+watch(
+  () => props.values,
+  (newVals) => {
+    inputValues.value = newVals;
+  }
+);
 </script>
 
 <template>
   <div class="mb-[1.875rem]">
     <label class="text-secondary mb-4 inline-block">{{ title }}</label>
     <label
-      v-for="val in values"
-      class="mb-[0.625rem] pl-[1.125rem] w-full flex items-center gap-x-[1.25rem] border-secondary border-[0.063rem] relative rounded-[0.25rem] h-[3.125rem]"
+      v-for="val in inputValues"
+      :class="`${
+        val.isChecked ? 'bg-bg-radio-input border-bg-cta' : 'border-secondary'
+      } mb-[0.625rem] pl-[1.125rem] w-full flex items-center gap-x-[1.25rem]  border-[0.063rem] relative rounded-[0.25rem] h-[3.125rem]`"
     >
       <input
         :id="val.title.toLowerCase().replace(' ', '_')"
