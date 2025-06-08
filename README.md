@@ -104,6 +104,8 @@ watch(
 - [::before and ::after](https://tailwindcss.com/docs/hover-focus-and-other-states#before-and-after) - ~~This helped me use before pseudo element in TailwindCSS~~ It turns out it's easier to just use a new element instead of using `::before` or `::after`
 - [Monthly payment formula](https://en.wikipedia.org/wiki/Mortgage_calculator#Monthly_payment_formula) - I tried using this formula but it just didnt yield the right results, so I turned and asked chatgpt for the mortgage formula in the UK - and it worked
 - [Number.prototype.toLocaleString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#using_options) - This helped me format the floating point numbers to use a maximum of 2 decimal places
+- [Vue Test Utils v2](https://test-utils.vuejs.org/guide/) - This helped me write the tests for the components
+- [:nth-child()](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) - This helped me remember whether nth-child is 0 based or not - it isn't
 
 ## Author
 

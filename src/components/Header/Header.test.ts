@@ -1,35 +1,30 @@
-/* import { mount } from "@vue/test-utils";
-import { describe, it, expect, vi } from "vitest";
+import { mount } from "@vue/test-utils";
+import { describe, it, expect } from "vitest";
 
-import Button from "./Button.vue";
+import Header from "./Header.vue";
 
-describe("Button", () => {
-  it("renders the text", () => {
-    const wrapper = mount(Button, {
+describe("Header", () => {
+  const titleText = "Lorem Ipsum dolor sit amet";
+
+  it("renders the default title text", () => {
+    const wrapper = mount(Header, {
       props: {
-        label: "Click me!",
-        onClick: () => {},
-        disabled: false,
-        variant: "primary",
-        size: "large",
+        title: titleText,
       },
     });
-    expect(wrapper.find("button").text()).toBe("Click me!");
+
+    expect(wrapper.find("a:first-child").text()).toBe(titleText);
   });
 
-  it("calls onClick when clicked", () => {
-    const onClick = vi.fn();
-    const wrapper = mount(Button, {
+  it("emits clearAll when clicked on the second anchor", () => {
+    const wrapper = mount(Header, {
       props: {
-        label: "Click me!",
-        onClick,
-        disabled: false,
-        variant: "primary",
-        size: "large",
+        title: titleText,
       },
     });
-    wrapper.find("button").trigger("click");
-    expect(onClick).toHaveBeenCalled();
+
+    wrapper.find("a:nth-child(2)").trigger("click");
+
+    expect(wrapper.emitted()).toHaveProperty("clearAll");
   });
 });
- */

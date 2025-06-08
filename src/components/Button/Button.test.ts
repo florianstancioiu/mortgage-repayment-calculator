@@ -1,35 +1,18 @@
-/* import { mount } from "@vue/test-utils";
-import { describe, it, expect, vi } from "vitest";
+import { mount } from "@vue/test-utils";
+import { describe, it, expect } from "vitest";
 
 import Button from "./Button.vue";
 
 describe("Button", () => {
-  it("renders the text", () => {
-    const wrapper = mount(Button, {
-      props: {
-        label: "Click me!",
-        onClick: () => {},
-        disabled: false,
-        variant: "primary",
-        size: "large",
-      },
-    });
-    expect(wrapper.find("button").text()).toBe("Click me!");
-  });
+  const btnText = "Lorem Ipsum dolor sit amet";
 
-  it("calls onClick when clicked", () => {
-    const onClick = vi.fn();
+  it("renders the default slot text", () => {
     const wrapper = mount(Button, {
-      props: {
-        label: "Click me!",
-        onClick,
-        disabled: false,
-        variant: "primary",
-        size: "large",
+      props: {},
+      slots: {
+        default: btnText,
       },
     });
-    wrapper.find("button").trigger("click");
-    expect(onClick).toHaveBeenCalled();
+    expect(wrapper.find("button").text()).toBe(btnText);
   });
 });
- */
