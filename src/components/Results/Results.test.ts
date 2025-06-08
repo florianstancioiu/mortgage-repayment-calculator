@@ -1,35 +1,30 @@
-/* import { mount } from "@vue/test-utils";
-import { describe, it, expect, vi } from "vitest";
+import { mount } from "@vue/test-utils";
+import { describe, it, expect } from "vitest";
 
-import Button from "./Button.vue";
+import Results from "./Results.vue";
 
-describe("Button", () => {
-  it("renders the text", () => {
-    const wrapper = mount(Button, {
+describe("Results", () => {
+  it("renders the right section for NaN values", () => {
+    const wrapper = mount(Results, {
       props: {
-        label: "Click me!",
-        onClick: () => {},
-        disabled: false,
-        variant: "primary",
-        size: "large",
+        monthlyRepayments: NaN,
+        totalRepay: NaN,
       },
     });
-    expect(wrapper.find("button").text()).toBe("Click me!");
+
+    expect(wrapper.find(".empty-results-container").exists()).toBe(true);
+    expect(wrapper.find(".your-results-container").exists()).toBe(false);
   });
 
-  it("calls onClick when clicked", () => {
-    const onClick = vi.fn();
-    const wrapper = mount(Button, {
+  it("renders the right section for non-NaN values", () => {
+    const wrapper = mount(Results, {
       props: {
-        label: "Click me!",
-        onClick,
-        disabled: false,
-        variant: "primary",
-        size: "large",
+        monthlyRepayments: 12345,
+        totalRepay: 12345,
       },
     });
-    wrapper.find("button").trigger("click");
-    expect(onClick).toHaveBeenCalled();
+
+    expect(wrapper.find(".empty-results-container").exists()).toBe(false);
+    expect(wrapper.find(".your-results-container").exists()).toBe(true);
   });
 });
- */

@@ -3,7 +3,7 @@ import EmptyIllustrationSVG from "../../../assets/svg/illustration-empty.svg";
 </script>
 
 <template>
-  <div class="lg:h-full lg:grid lg:place-items-center">
+  <div class="lg:h-full lg:grid lg:place-items-center empty-results-container">
     <div
       class="bg-bg-secondary text-center pt-[2.25rem] pb-[2.25rem] text-white lg:px-[2.5rem]"
     >

@@ -7,7 +7,7 @@ const { monthlyRepayments, totalRepay } = defineProps<{
 
 <template>
   <div
-    class="bg-bg-secondary pb-[2.25rem] px-[1.5rem] text-white lg:px-[2.5rem]"
+    class="bg-bg-secondary pb-[2.25rem] px-[1.5rem] text-white lg:px-[2.5rem] your-results-container"
   >
     <p class="pt-[2.75rem] mb-[1.875rem] text-2xl font-bold">Your results</p>
     <p class="opacity-50 mb-[1.75rem]">
